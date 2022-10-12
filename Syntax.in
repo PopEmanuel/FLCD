@@ -1,0 +1,49 @@
+decllist = declaration | declaration ";" decllist
+
+declaration = IDENTIFIER " " type
+
+type1 = "BOOL" | "CHAR" | "INT" | "DOUBLE" | "bool" | "char" | "int" | "double"
+
+arraydecl = IDENTIFIER "[" nr "]" 
+
+type  = type1|arraydecl
+
+cmpdstmt = "{" stmtlist "}"
+
+stmtlist = stmt ";" | stmt ";" stmtlist
+
+stmt = simplstmt | structstmt
+
+simplstmt = assignstmt | iostmt
+
+assignstmt = IDENTIFIER ":=" expression
+
+expression = expression arithmeticSymbol term | term
+
+arithmeticSymbol1 = + | - 
+
+arithmeticSymbol2 = * | /
+
+term = term (arithmeticSymbol1 | arithmeticSymbol2) factor | factor
+
+factor = "(" expression ")" | IDENTIFIER | constant
+
+constant =  integer | string | char
+
+iostmt = ("readFrom" itype | "writeTo" otype) "(" IDENTIFIER ")"
+
+itype = Kb | File
+
+otype = Scr | File
+
+structstmt = cmpdstmt | ifstmt | whilestmt
+
+ifstmt = "if" condition "{" stmt "}" "else" "{" stmt "}"
+
+whilestmt = "while" condition "{" stmt "}"
+
+forstmt = "for(" declaration ";" condition ";" assignstmt ")" "{" stmt "}" 
+
+condition = expression RELATION (expression | constant)
+
+RELATION = "<" | "<:=" | ":==" | ">:=" | ">"

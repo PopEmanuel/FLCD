@@ -1,0 +1,53 @@
+Alphabet:
+
+       a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
+
+       b. Underline character '_';
+
+       c. Decimal digits (0-9);
+
+Lexic:
+
+    a.Special symbols, representing:
+
+        - operators + - * / :== < <:= := >:=
+
+        - separators { }  : ; space
+
+        - reserved words:
+
+        let const char do else if int readFromKb writeToScr readFromFile writeToFile for while func  
+
+    b.identifiers
+
+  -a sequence of letters and  digits, such that the first character is a letter; the rule is:
+
+    identifier = letter ({letter}|{digit})                                                                                //
+
+    letter = A | B | . ..| Z | a | b | ... | z
+
+    digit = 0 | 1 |...| 9
+
+    nonzero-digit = 1 | 2 | ... | 9
+
+      c.constants
+
+1.integer - rule:
+
+      noconst:=0|"-"no|no                                                                                                     //
+
+      no:=nonzero-digit{no2}
+
+      no2:=digit|{no2}
+
+2.character
+
+    character:='letter'|'digit'
+
+3.string
+
+      constchar:="string"
+
+      string:=char{string}
+
+      char:=letter|digit
