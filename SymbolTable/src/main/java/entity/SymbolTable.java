@@ -17,4 +17,13 @@ public class SymbolTable {
         return table.get(value);
     }
 
+    public Boolean isPresent(String value){
+        return table.isPresent(value);
+    }
+
+    public String toString()
+    {
+        return table.toString();
+    }
+
 }

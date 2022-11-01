@@ -1,4 +1,7 @@
 import entity.MyScanner;
+import entity.RegexPatterns;
+
+import java.util.List;
 
 public class Main {
 
@@ -6,14 +9,9 @@ public class Main {
     {
         MyScanner scanner = new MyScanner();
 
-        var response = scanner.getIdentifier();
-        System.out.println(response.getKey() + "|" + response.getValue());
-        response = scanner.getIdentifier();
-        System.out.println(response.getKey() + "|" + response.getValue());
-        response = scanner.getIdentifier();
-        System.out.println(response.getKey() + "|" + response.getValue());
-        response = scanner.getIdentifier();
-        System.out.println(response.getKey() + "|" + response.getValue());
+        String str = scanner.readFile("C:\\school\\limbaje\\lab\\FLCD\\SymbolTable\\src\\main\\resources\\p1err.txt");
+
+        scanner.scan(str);
 
     }
 }

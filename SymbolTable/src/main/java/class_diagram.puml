@@ -1,0 +1,225 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1298275357 { 
+   	label=entity
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   HashTable1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)HashTable</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   hashCode: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   size: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   table: String[][] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(value: String): hashResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(value: String): hashResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >- hash(value: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isPresent(value: String): Boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MyScanner1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MyScanner</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   pif: PIF [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   regex: RegexPatterns [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   symbolTable: SymbolTable [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clear()</TD></TR>
+<TR><TD ALIGN="LEFT" >- findLocation(p: String, program: String): hashResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parseProgram(program: String): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ printResults()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFile(path: String): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ register(value: String): hashResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >+ scan(program: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PIF1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PIF</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   pif: List&lt;pifEntity&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(key: String, value: Integer)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RegexPatterns1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RegexPatterns</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   patterns: Map&lt;String, String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   reservedWords: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   types: List&lt;String&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ evaluate(str: String): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+SymbolTable1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)SymbolTable</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   table: HashTable [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(value: String): hashResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(value: String): hashResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isPresent(value: String): Boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+pifEntity1298275357[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)pifEntity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   key: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   value: Integer [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2390489 { 
+   	label=Main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Main2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+MyScanner1298275357 -> PIF1298275357[label="pif
+[0..1]"];
+MyScanner1298275357 -> RegexPatterns1298275357[label="regex
+[0..1]"];
+MyScanner1298275357 -> SymbolTable1298275357[label="symbolTable
+[0..1]"];
+PIF1298275357 -> pifEntity1298275357[label="pif
+[0..*]"];
+SymbolTable1298275357 -> HashTable1298275357[label="table
+[0..1]"];
+    
+}
+@enduml

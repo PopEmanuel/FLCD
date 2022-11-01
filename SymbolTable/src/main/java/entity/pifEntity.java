@@ -1,19 +1,20 @@
 package entity;
 
-public class hashResponse {
-    private Integer key;
+public class pifEntity {
+
+    private String key;
     private Integer value;
 
-    public hashResponse(Integer key, Integer value) {
+    public pifEntity(String key, Integer value) {
         this.key = key;
         this.value = value;
     }
 
-    public Integer getKey() {
+    public String getKey() {
         return key;
     }
 
-    public void setKey(Integer key) {
+    public void setKey(String key) {
         this.key = key;
     }
 
