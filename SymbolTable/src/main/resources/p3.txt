@@ -1,0 +1,16 @@
+func main()
+{
+	let int n := readFromKb();
+	let int[] array;
+
+	for ( let int i := 0; i < 0; i := i + 1)
+		array[i] := readFromKb();
+
+	let int sum := 0;
+	for ( let int i := 0; i < 0; i := i + 1)
+		sum := sum + array[i];
+			
+	
+	writeToScr(sum);
+
+}

@@ -1,0 +1,21 @@
+func main()
+{
+    let int a := readFromKb();
+	
+	let bool prime := true;
+
+	if(a :== 0 || a :== 1){
+	prime := false;
+}	
+	
+	for (let int i := 0; i * i <:= a; i := i + 1)
+{
+	if (a % i :== 0){
+	    prime := false;
+	}
+	
+}
+	
+	writeToScr(prime);
+
+}
