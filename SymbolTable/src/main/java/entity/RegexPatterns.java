@@ -17,7 +17,7 @@ public class RegexPatterns {
         patterns.put("^\".\"", "string");
         patterns.put("[0-9]{1}|[1-9]+[0-9]*", "int");
         patterns.put("[_a-zA-Z][_a-zA-Z0-9]{0,30}", "identifier");
-        patterns.put("[_a-zA-Z][_a-zA-Z0-9]{0,30}\\[[_a-zA-Z0-9]{0,20}\\]", "identifier");
+        patterns.put("[_a-zA-Z][_a-zA-Z0-9]{0,30}\\[[_a-zA-Z0-9]{0,20}\\]", "array");
         patterns.put("[+|-|*|/|>|<]", "arithmetic");
         patterns.put("\\|\\|", "logical");
         patterns.put("&&", "logical");

@@ -1,7 +1,7 @@
 func main ()
 {
 	let int a := readFromKb();
-	let int b := readFromKb(), c := readFromKb();
+	let int a := readFromKb(), c := readFromKb();
 	
 	let int max := 0;
 	

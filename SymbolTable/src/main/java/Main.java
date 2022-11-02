@@ -9,7 +9,7 @@ public class Main {
     {
         MyScanner scanner = new MyScanner();
 
-        String str = scanner.readFile("C:\\school\\limbaje\\lab\\FLCD\\SymbolTable\\src\\main\\resources\\p1err.txt");
+        String str = scanner.readFile("C:\\school\\limbaje\\lab\\FLCD\\SymbolTable\\src\\main\\resources\\p1.txt");
 
         scanner.scan(str);
 
