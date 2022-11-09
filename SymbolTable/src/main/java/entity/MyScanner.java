@@ -71,7 +71,7 @@ public class MyScanner {
 
                 if (type.equals("identifier")) {
                     if (symbolTable.isPresent(p)) {
-                        pif.add(p, symbolTable.get(p).getKey());
+                        pif.add("id", symbolTable.get(p).getKey());
                         // System.out.println();
                     } else {
                         System.out.println("response from adding symbol is " + symbolTable.add(p).getValue());
