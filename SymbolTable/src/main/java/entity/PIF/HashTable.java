@@ -1,4 +1,4 @@
-package entity;
+package entity.PIF;
 
 import java.util.Arrays;
 import java.util.Objects;

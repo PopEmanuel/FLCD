@@ -1,8 +1,7 @@
-package entity;
+package entity.PIF;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class PIF {
     List<pifEntity> pif;

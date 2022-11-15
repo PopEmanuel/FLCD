@@ -1,4 +1,4 @@
-package entity;
+package entity.PIF;
 
 import java.io.FileWriter;
 import java.io.IOException;

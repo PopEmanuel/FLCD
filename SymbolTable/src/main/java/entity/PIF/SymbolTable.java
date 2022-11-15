@@ -1,4 +1,4 @@
-package entity;
+package entity.PIF;
 
 public class SymbolTable {
     private final HashTable table;

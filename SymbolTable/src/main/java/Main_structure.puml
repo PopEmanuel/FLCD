@@ -83,13 +83,86 @@ digraph g {
     
 
 'nodes 
-subgraph cluster_1298275357 { 
-   	label=entity
+subgraph cluster_2139942113 { 
+   	label=FiniteAutomata
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   HashTable1298275357[
+   FA565683338[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FA</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alphabet: Set&lt;Integer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   initialState: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   states: List&lt;State&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ startScan()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ verifySequence(sequence: String): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+State565683338[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)State</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   isFinal: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   symbol: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   transitions: List&lt;Transition&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   visited: boolean [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Transition565683338[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Transition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   childState: State [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   etiquette: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parentState: State [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2390489 { 
+   	label=Main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Main2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- showMenu()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_79213 { 
+   	label=PIF
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   HashTable1484171038[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)HashTable</TD></TR>
 <HR/>
@@ -108,7 +181,7 @@ subgraph cluster_1298275357 {
 	fillcolor="#FFFFFF"
 ];
 
-MyScanner1298275357[
+MyScanner1484171038[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)MyScanner</TD></TR>
 <HR/>
@@ -130,7 +203,7 @@ MyScanner1298275357[
 	fillcolor="#FFFFFF"
 ];
 
-PIF1298275357[
+PIF1484171038[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)PIF</TD></TR>
 <HR/>
@@ -144,7 +217,7 @@ PIF1298275357[
 	fillcolor="#FFFFFF"
 ];
 
-RegexPatterns1298275357[
+RegexPatterns1484171038[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)RegexPatterns</TD></TR>
 <HR/>
@@ -160,7 +233,7 @@ RegexPatterns1298275357[
 	fillcolor="#FFFFFF"
 ];
 
-SymbolTable1298275357[
+SymbolTable1484171038[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)SymbolTable</TD></TR>
 <HR/>
@@ -176,7 +249,7 @@ SymbolTable1298275357[
 	fillcolor="#FFFFFF"
 ];
 
-pifEntity1298275357[
+pifEntity1484171038[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)pifEntity</TD></TR>
 <HR/>
@@ -190,35 +263,25 @@ pifEntity1298275357[
 ];
 } 
 
-subgraph cluster_2390489 { 
-   	label=Main
-	labeljust=l
-	fillcolor="#ececec"
-	style=filled
-   
-   Main2390489[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-} 
-
 'edges    
-MyScanner1298275357 -> PIF1298275357[label="pif
-[0..1]"];
-MyScanner1298275357 -> RegexPatterns1298275357[label="regex
-[0..1]"];
-MyScanner1298275357 -> SymbolTable1298275357[label="symbolTable
-[0..1]"];
-PIF1298275357 -> pifEntity1298275357[label="pif
+FA565683338 -> State565683338[label="states
 [0..*]"];
-SymbolTable1298275357 -> HashTable1298275357[label="table
+Main2390489 -> MyScanner1484171038[label="main() -> readFile()"];
+MyScanner1484171038 -> PIF1484171038[label="pif
+[0..1]"];
+MyScanner1484171038 -> RegexPatterns1484171038[label="regex
+[0..1]"];
+MyScanner1484171038 -> SymbolTable1484171038[label="symbolTable
+[0..1]"];
+PIF1484171038 -> pifEntity1484171038[label="pif
+[0..*]"];
+State565683338 -> Transition565683338[label="transitions
+[0..*]"];
+SymbolTable1484171038 -> HashTable1484171038[label="table
+[0..1]"];
+Transition565683338 -> State565683338[label="childState
+[0..1]"];
+Transition565683338 -> State565683338[label="parentState
 [0..1]"];
     
 }
