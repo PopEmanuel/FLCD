@@ -9,6 +9,8 @@ import java.util.Set;
 
 public class FA {
     private String initialState;
+    private List<String> finalStates;
+    private List<Transition> transitions;
     private List<State> states;
     private Set<Integer> alphabet;
 
@@ -19,6 +21,8 @@ public class FA {
         this.initialState = initialState;
         this.states = states;
         this.alphabet = alphabet;
+        this.transitions = new ArrayList<>();
+        this.finalStates = new ArrayList<>();
     }
 
     public void startScan() throws FileNotFoundException {
@@ -35,9 +39,10 @@ public class FA {
                 String state = scanner.next();
                 String finish = scanner.next();
                 if (finish.equals("f")) {
-                    this.states.add(new State(state, new ArrayList<>(), true, false));
+                    this.states.add(new State(state, true, false));
+                    this.finalStates.add(state);
                 } else {
-                    this.states.add(new State(state, new ArrayList<>(), false, false));
+                    this.states.add(new State(state, false, false));
                 }
             }
 
@@ -70,7 +75,7 @@ public class FA {
                     throw new WrongInputException("Incorrect to state");
                 }
 
-                fromState.getTransitions().add(new Transition(fromState, toState, etiquette));
+                this.transitions.add(new Transition(fromState, toState, etiquette));
                 alphabet.add(etiquette);
             }
         } catch (Exception e) {
@@ -99,8 +104,10 @@ public class FA {
             Transition transition;
             Integer el = (int) element - 48;
             System.out.println("etiquette " + el);
-            var optional = initial.getTransitions().stream()
-                    .filter(t -> t.getEtiquette().equals(el))
+
+            State finalInitial = initial;
+            var optional = this.transitions.stream()
+                    .filter(t -> t.getEtiquette().equals(el) && t.getParentState().getSymbol().equals(finalInitial.getSymbol()))
                     .findFirst();
             if (optional.isPresent()) {
                 transition = optional.get();
@@ -145,6 +152,14 @@ public class FA {
 
     public void setAlphabet(Set<Integer> alphabet) {
         this.alphabet = alphabet;
+    }
+
+    public List<Transition> getTransitions() {
+        return transitions;
+    }
+
+    public void setTransitions(List<Transition> transitions) {
+        this.transitions = transitions;
     }
 
     @Override

@@ -4,16 +4,14 @@ import java.util.List;
 
 public class State {
     private String symbol;
-    private List<Transition> transitions;
     private boolean isFinal;
     private boolean visited;
 
     public State() {
     }
 
-    public State(String symbol, List<Transition> transitions, boolean isFinal, boolean visited) {
+    public State(String symbol, boolean isFinal, boolean visited) {
         this.symbol = symbol;
-        this.transitions = transitions;
         this.isFinal = isFinal;
         this.visited = visited;
     }
@@ -24,14 +22,6 @@ public class State {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
-    }
-
-    public List<Transition> getTransitions() {
-        return transitions;
-    }
-
-    public void setTransitions(List<Transition> transitions) {
-        this.transitions = transitions;
     }
 
     public boolean isFinal() {
@@ -46,7 +36,7 @@ public class State {
     public String toString() {
         return "State{" +
                 "symbol='" + symbol + '\'' +
-                ", transitions=" + transitions +
+                ", transitions=" +
                 ", isFinal=" + isFinal +
                 '}';
     }

@@ -45,16 +45,12 @@ public class Main {
                     System.out.println(fa.getAlphabet());
                     break;
                 case 3:
-                    var states2 = fa.getStates();
-                    for(var s : states2){
-                        var transitions = s.getTransitions();
-
+                    var transitions = fa.getTransitions();
                         for(var trans : transitions){
                             System.out.println(trans.getParentState().getSymbol() +
                                     " " + trans.getEtiquette() +
                                     " " + trans.getChildState().getSymbol());
                         }
-                    }
                     break;
                 case 4:
                     try{
