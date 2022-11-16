@@ -115,10 +115,10 @@ public class FA {
             return false;
         }
 
-        long count = this.states.stream().filter(State::isVisited).toList().size();
-        if (count != this.states.size()) {
-            return false;
-        }
+//        long count = this.states.stream().filter(State::isVisited).toList().size();
+//        if (count != this.states.size()) {
+//            return false;
+//        }
 
         return true;
     }

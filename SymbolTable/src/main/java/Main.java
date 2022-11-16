@@ -36,15 +36,24 @@ public class Main {
                     end = true;
                     break;
                 case 1:
-                    System.out.println(fa.getStates().toString());
+                    var states = fa.getStates();
+                    for(var state : states){
+                        System.out.println(state.getSymbol());
+                    }
                     break;
                 case 2:
                     System.out.println(fa.getAlphabet());
                     break;
                 case 3:
-                    var states = fa.getStates();
-                    for(var s : states){
-                        System.out.println(s.getTransitions());
+                    var states2 = fa.getStates();
+                    for(var s : states2){
+                        var transitions = s.getTransitions();
+
+                        for(var trans : transitions){
+                            System.out.println(trans.getParentState().getSymbol() +
+                                    " " + trans.getEtiquette() +
+                                    " " + trans.getChildState().getSymbol());
+                        }
                     }
                     break;
                 case 4:
